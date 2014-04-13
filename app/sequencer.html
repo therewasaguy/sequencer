@@ -5,7 +5,6 @@
   <script type="text/javascript" src='../build/Tone.js'></script>
   <script type="text/javascript" src='http://code.jquery.com/jquery-2.1.0.min.js'></script>
   <script type="text/javascript" src="seq.js"></script>
-  <script src="../js/jquery.knob.js"></script>
 
   <style>
     input[type="radio"], input[type="checkbox"] {
@@ -56,11 +55,11 @@
 </div>
 
 <div id="delayControls">
-Delay Time  //    Delay Feedback
+Delay Time       //////////////       Delay Feedback
   <div style="width:50%; text-align:left;">
-  <input class="cs_knob" value="0" name="delayTime" min="0.0" max="4.0" step=".1"> 
+  <input class="knob" type="range" value=".25" name="delayTime" min="0.0" max="1.0" step=".01" onchange="delTime(this.value)"> 
 
-  <input class="cs_knob" value="0" name="delayFeedback"> 
+  <input class="knob" type="range" value=".6" name="delayFeedback" min="0.0" max="1.0" step=".01" onchange="delFeedback(this.value)"> 
   </div>
 </div>
 

@@ -28,6 +28,7 @@ function setBPM(e) {
 
 function loadFiles(callback) {
 
+
   //create Delay node
   feedbackDelay = new Tone.FeedbackDelay(.25);
   feedbackDelay.setDelayTime("0:0:1");
@@ -118,3 +119,17 @@ function initTransport() {
 }
 
 
+//change delay parameters
+function delTime(val) {
+  var whole = Tone.prototype.transportTimeToSeconds("0:1:0");
+  var newVal = val*whole;
+  feedbackDelay.setDelayTime(newVal);
+  console.log("del time: " + newVal);
+}
+
+function delFeedback(val) {
+  console.log("del feedback: " +val);
+  // feedbackDelay.setDelayTime("0:0:1");
+  feedbackDelay.setFeedback(val);
+
+}
