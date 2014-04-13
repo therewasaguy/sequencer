@@ -5,6 +5,21 @@
   <script type="text/javascript" src='../build/Tone.js'></script>
   <script type="text/javascript" src='http://code.jquery.com/jquery-2.1.0.min.js'></script>
   <script type="text/javascript" src="seq.js"></script>
+  <script src="../js/jquery.knob.js"></script>
+
+  <style>
+    input[type="radio"], input[type="checkbox"] {
+      width: 75px;
+      height: 25px;
+      padding: 0 5px 0 0;
+/*      background: url(checkbox.png) no-repeat;
+*//*      display: inline;
+      clear: left;
+      float: left;
+  */  }
+
+  </style>
+
 </head>
 
 
@@ -40,6 +55,72 @@
 
 </div>
 
+<div id="delayControls">
+Delay Time  //    Delay Feedback
+  <div style="width:50%; text-align:left;">
+  <input class="cs_knob" value="0" name="delayTime" min="0.0" max="4.0" step=".1"> 
+
+  <input class="cs_knob" value="0" name="delayFeedback"> 
+  </div>
+</div>
+
+
+<script>
+  $(".cs_knob").knob({
+     min : 0.0, 
+     max : 4.0, 
+     step : .05, 
+    angleOffset : 0, 
+    angleArc : 360, 
+    stopper : true, 
+    readOnly : false, 
+    cursor : false,  
+    lineCap : 'butt', 
+    thickness : '0.2', 
+    width : 150, 
+    displayInput : true, 
+    displayPrevious : true, 
+    fgColor : '#87CEEB', 
+    inputColor : '#87CEEB', 
+    font : 'Arial', 
+    fontWeight : 'normal', 
+    bgColor : '#EEEEEE', 
+    draw : function () {
+    if(this.$.data('skin') == 'tron') {
+    var a = this.angle(this.cv)  // Angle
+    , sa = this.startAngle          // Previous start angle
+    , sat = this.startAngle         // Start angle
+    , ea                            // Previous end angle
+    , eat = sat + a                 // End angle
+    , r = 1;
+    this.g.lineWidth = this.lineWidth;
+    this.o.cursor
+    && (sat = eat - 0.3)
+    && (eat = eat + 0.3);
+    if (this.o.displayPrevious) {
+    ea = this.startAngle + this.angle(this.v);
+    this.o.cursor
+    && (sa = ea - 0.3)
+    && (ea = ea + 0.3);
+    this.g.beginPath();
+    this.g.strokeStyle = this.pColor;
+    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+    this.g.stroke();
+    }
+    this.g.beginPath();
+    this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
+    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+    this.g.stroke();
+    this.g.lineWidth = 2;
+    this.g.beginPath();
+    this.g.strokeStyle = this.o.fgColor;
+    this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+    this.g.stroke();
+    return false;
+    }
+  }
+  });
+</script>
 
 </body>
 </html>

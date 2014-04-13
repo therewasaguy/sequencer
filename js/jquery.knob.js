@@ -113,7 +113,7 @@
                     font: this.$.data('font') || 'Arial',
                     fontWeight: this.$.data('font-weight') || 'bold',
                     inline : false,
-                    step : this.$.data('step') || 1,
+                    step : this.$.data('step') || 1.,
 
                     // Hooks
                     draw : null, // function () {}

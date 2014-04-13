@@ -1,3 +1,5 @@
+    var kick, snare, hh;
+    var tone, feedbackDelay;
     var aStep;
     var steps = [];
     var stepCounter = 0;
@@ -10,11 +12,11 @@
 
 //document ready function
     $( document ).ready(function() {
+      loadFiles(initTransport);
       createSteps();
       assignTempo();
       createCheckBoxes();
       assignCheckBoxes();
-      initTransport();
     });
 
 function setBPM(e) {
@@ -24,18 +26,29 @@ function setBPM(e) {
   $("#tempotxt").html("BPM: " + bpm);
 }
 
-//load files
-    var kick = new Tone.Player("../audio/505/kick.mp3");
-    kick.load(console.log('loaded kick!'));
-    kick.toMaster();
+function loadFiles(callback) {
 
-    var snare = new Tone.Player("../audio/505/snare.mp3");
-    snare.load(console.log('loaded snare!'));
-    snare.toMaster();
+  //create Delay node
+  feedbackDelay = new Tone.FeedbackDelay(.25);
+  feedbackDelay.setDelayTime("0:0:1");
+  feedbackDelay.setFeedback(.6);
+  feedbackDelay.toMaster();
 
-    var hh = new Tone.Player("../audio/505/hh.mp3");
-    hh.load(console.log('loaded hh!'));
-    hh.toMaster();
+  //load files
+      kick = new Tone.Player("../audio/505/kick.mp3");
+      kick.load(console.log('loaded kick!'));
+      kick.connect(feedbackDelay);
+
+      snare = new Tone.Player("../audio/505/snare.mp3");
+      snare.load(console.log('loaded snare!'));
+      snare.connect(feedbackDelay);
+
+      hh = new Tone.Player("../audio/505/hh.mp3");
+      hh.load(console.log('loaded hh!'));
+      hh.connect(feedbackDelay);
+
+      initTransport();
+}
 
 function createSteps() {
     aStep = function() {
