@@ -1,0 +1,45 @@
+<html>
+<head>
+  <title>Sequencer (demo)</title>
+
+  <script type="text/javascript" src='../build/Tone.js'></script>
+  <script type="text/javascript" src='http://code.jquery.com/jquery-2.1.0.min.js'></script>
+  <script type="text/javascript" src="seq.js"></script>
+</head>
+
+
+<body>
+<input type="range" name="points" id="tempo" min="50" max="200" onchange="setBPM(this.value)">
+<p id="tempotxt"></p>
+
+
+<!--all of these inputs are populated by javascript in seq.js-->
+  <div id="clicker">
+  </div>
+
+<div id="sequences">
+
+  <div id="sumTog">
+  </div>
+
+  <div id="kickTog">
+    <p>Kick</p>
+  </div>
+
+  <br/>
+
+  <div id="snareTog">
+    <p>Snare</p>
+  </div>
+
+  <br/>
+
+  <div id="hhTog">
+    <p>HH</p>
+  </div>
+
+</div>
+
+
+</body>
+</html>
