@@ -17,16 +17,26 @@
       float: left;
   */  }
 
+    input[type="radio"]{
+      color:yellow;
+    }
+
+    .select {
+      color:red;
+    }
+
+    #clicker {
+      background-color: #ccc;
+    }
+    #sequences {
+      background-color: #aaa;
+    }
   </style>
 
 </head>
 
 
 <body>
-<input type="range" name="points" id="tempo" min="50" max="200" onchange="setBPM(this.value)">
-<p id="tempotxt"></p>
-
-
 <!--all of these inputs are populated by javascript in seq.js-->
   <div id="clicker">
   </div>
@@ -55,11 +65,16 @@
 </div>
 
 <div id="delayControls">
-Delay Time       //////////////       Delay Feedback
-  <div style="width:50%; text-align:left;">
-  <input class="knob" type="range" value=".25" name="delayTime" min="0.0" max="1.0" step=".01" onchange="delTime(this.value)"> 
+  <div style="width:100%; text-align:left;">
+  
+  <span>Delay Time: </span><input class="knob" type="range" value=".25" name="delayTime" min="0.0" max="1.0" step=".0333" onchange="delTime(this.value)"> 
+  <span>Delay Feedback: </span>
+  <input class="knob" type="range" value=".3" name="delayFeedback" min="0.0" max="1.0" step=".01" onchange="delFeedback(this.value)"> 
+  <span>Delay Wetness: </span>
+  <input class="knob" type="range" value="-.8" name="delayWet" min="-1.0" max="1.0" step=".01" onchange="delWet(this.value)"> 
+  <span id="tempotxt"></span>
+  <input type="range" name="points" id="tempo" min="50" max="200" onchange="setBPM(this.value)">
 
-  <input class="knob" type="range" value=".6" name="delayFeedback" min="0.0" max="1.0" step=".01" onchange="delFeedback(this.value)"> 
   </div>
 </div>
 

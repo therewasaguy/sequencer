@@ -86,8 +86,6 @@ function assignCheckBoxes() {
       var tStep = steps[this.value-1];
       var tInstr = this.name;
       tStep[tInstr] = Number(this.checked);
-      console.log(tStep[tInstr]);
-      console.log(tStep);
    });
 }
 
@@ -102,7 +100,6 @@ function initTransport() {
     Tone.Transport.setInterval(function(startTime){
       stepCounter++;
       stepCounter = stepCounter % steps.length;
-      console.log(stepCounter);
       var step = steps[stepCounter];
       if (step.kick == 1) {
         kick.start();
@@ -133,5 +130,10 @@ function delFeedback(val) {
   console.log("del feedback: " +val);
   // feedbackDelay.setDelayTime("0:0:1");
   feedbackDelay.setFeedback(val);
+}
 
+function delWet(val) {
+  console.log("del wet" +val);
+  // feedbackDelay.setDelayTime("0:0:1");
+  feedbackDelay.setWet(val, .2);
 }
