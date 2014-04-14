@@ -58,7 +58,7 @@ function createSteps() {
       this.hh = 0;
     }
 
-    for (i = 1; i<=numSteps+1; i++) {
+    for (i = 1; i<=numSteps; i++) {
       steps.push(new aStep());
       console.log("step " + i)
     };
@@ -83,7 +83,7 @@ function assignTempo() {
 function assignCheckBoxes() {
     $('[type="checkbox"]').change(function() {
       console.log(this.name + " " + this.value + " " + Number(this.checked));
-      var tStep = steps[this.value];
+      var tStep = steps[this.value-1];
       var tInstr = this.name;
       tStep[tInstr] = Number(this.checked);
       console.log(tStep[tInstr]);
@@ -94,13 +94,16 @@ function assignCheckBoxes() {
 
 
 function keepTime(whichBeat) {
-  var radButtons = $('#c'+whichBeat)
+  var radButtons = $('#c'+(whichBeat+1))
   $(radButtons).prop("checked", true)
 }
 
 function initTransport() {
     Tone.Transport.setInterval(function(startTime){
-      var step = steps[stepCounter++];
+      stepCounter++;
+      stepCounter = stepCounter % steps.length;
+      console.log(stepCounter);
+      var step = steps[stepCounter];
       if (step.kick == 1) {
         kick.start();
       }
@@ -111,8 +114,7 @@ function initTransport() {
         hh.start();
       }
       keepTime(stepCounter);
-      stepCounter = stepCounter % steps.length;
-      // console.log(step);
+      // console.log(stepCounter);
     }, "0:0:1");
 
     Tone.Transport.start(0);
