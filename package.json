@@ -1,0 +1,26 @@
+{
+  "name": "sequencer",
+  "description": "web sequencer",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "ejs": "~1.0.0",
+    "body-parser": "~1.0.2"
+  },
+  "author": "Jason Sigal",
+  "license": "BSD",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/therewasaguy/sequencer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/therewasaguy/sequencer/issues"
+  },
+  "homepage": "https://github.com/therewasaguy/sequencer",
+  "devDependencies": {}
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sequencer (demo)</title>
+
+  <script type="text/javascript" src='../public/build/Tone.js'></script>
+  <script type="text/javascript" src='http://code.jquery.com/jquery-2.1.0.min.js'></script>
+  <script type="text/javascript" src="../public/app/seq.js"></script>
+
+  <style>
+    input[type="radio"], input[type="checkbox"] {
+      width: 75px;
+      height: 25px;
+      padding: 0 5px 0 0;
+/*      background: url(checkbox.png) no-repeat;
+*//*      display: inline;
+      clear: left;
+      float: left;
+  */  }
+
+    input[type="radio"]{
+      color:yellow;
+    }
+
+    .select {
+      color:red;
+    }
+
+    #clicker {
+      background-color: #ccc;
+    }
+    #sequences {
+      background-color: #aaa;
+    }
+  </style>
+
+</head>
+
+
+<body>
+<!--all of these inputs are populated by javascript in seq.js-->
+  <div id="clicker">
+  </div>
+
+<div id="sequences">
+
+  <div id="sumTog">
+  </div>
+
+  <div id="kickTog">
+    <p>Kick</p>
+  </div>
+
+  <br/>
+
+  <div id="snareTog">
+    <p>Snare</p>
+  </div>
+
+  <br/>
+
+  <div id="hhTog">
+    <p>HH</p>
+  </div>
+
+</div>
+
+<div id="delayControls">
+  <div style="width:100%; text-align:left;">
+  
+  <span>Delay Time: </span><input class="knob" type="range" value=".25" name="delayTime" min="0.0" max="1.0" step=".0333" onchange="delTime(this.value)"> 
+  <span>Delay Feedback: </span>
+  <input class="knob" type="range" value=".3" name="delayFeedback" min="0.0" max="1.0" step=".01" onchange="delFeedback(this.value)"> 
+  <span>Delay Wetness: </span>
+  <input class="knob" type="range" value="-.8" name="delayWet" min="-1.0" max="1.0" step=".01" onchange="delWet(this.value)"> 
+  <span id="tempotxt"></span>
+  <input type="range" name="points" id="tempo" min="50" max="200" onchange="setBPM(this.value)">
+
+  </div>
+</div>
+
+</body>
+</html>
