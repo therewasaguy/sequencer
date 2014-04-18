@@ -1,5 +1,4 @@
 var express = require('express');
-var html = require('html');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var app = express();
